@@ -1,4 +1,4 @@
-.MyCalendar .ajax__calendar_container {background-color:#ccccff;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;position:absolute;cursor:default;width:170px;font-size:11px;text-align:center;font-family:verdana,tahoma,helvetica;}
+﻿.MyCalendar .ajax__calendar_container {background-color:#ccccff;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;position:absolute;cursor:default;width:170px;font-size:11px;text-align:center;font-family:verdana,tahoma,helvetica;}
 .MyCalendar .ajax__calendar_body {width:170px;position:relative;overflow:hidden;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;}
 .MyCalendar .ajax__calendar_days, .ajax__calendar_months, .ajax__calendar_years 
 {

@@ -1,0 +1,163 @@
+﻿BODY
+{
+  font-family: Arial;
+  font-size: 11px;
+  margin: 0px 0px 0px 0px;	
+}
+SELECT
+{
+	font-size: 11px;
+	}
+.TextDate
+{
+	background-color: Transparent;
+  border: solid 0px #AAAACC;	
+  font-size: 12px;	
+}
+.TextGrid
+{
+	background-color: Transparent;
+  border: solid 0px #AAAACC;	
+  font-family: Arial;
+  font-size: 12px;	
+}
+.celda
+{
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+.menu
+{
+  background-image: url(Images/menu1.jpg);
+  background-position: right;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  color: White;
+}
+.menu:hover
+{
+  background-image: url(Images/menu2.jpg);
+  background-position: right;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  color: yellow;
+  cursor: hand;
+}
+.relieve
+{
+  background-image: url(Images/relieve.gif);	
+  background-position: top;
+  background-repeat: repeat-x; 
+}
+.selcal
+{
+  cursor: hand;	
+}
+.title
+{
+  font-weight: bold;
+  color: #000080;
+  font-size: 14px;	
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+INPUT
+{
+ font-size: 12px;
+	}
+	
+.gridAlternado
+{
+	background-color: #ffedcd;
+}
+.menuGridSobre
+{
+	background-color: #fcff8b;
+	
+}
+.boton
+{
+	color: White;
+	border-width:1px;
+	border-collapse: collapse;
+	border-style: solid;
+	border-color: #ab6426;
+	background-color: Gray;
+	font-weight:bold;
+	height: 24px;
+}
+.modalBackground 
+{
+    background-color:White;
+    filter:alpha(opacity=70);
+    opacity:0.7;
+}
+.modal
+{
+	background-color: #efefc6;
+	border-style: inset;
+	border-width: 1px;
+	border-color: Gray;	
+	text-align: center;
+	visibility: collapse;
+}
+.arrastre
+{
+	cursor: move;	
+}
+.tituloPop
+{
+	margin-bottom: 10px;
+	color: White;
+	height: 26px;
+	font-size: 13px;
+	font-weight: bold;
+	width: 100%;	
+}
+.tituloPop TD
+{
+	background-color: navy;
+	background-image: url(../Imagen/titulo-navy.gif);
+}
+.new0511
+{
+  background-color: #d7ffd7;	
+  border: solid 1px gray;
+}
+.buttonsDown
+{
+	position: fixed;
+	bottom: 0px;	
+	background-color: #4242ff;
+	color: White;
+	height: 26px;
+	width: 100%;
+	padding-left: 150px;
+}
+.Edition
+{
+   overflow: scroll;
+   height: 585px;	
+}
+.ColumnEd
+{
+	vertical-align: top;
+	white-space: nowrap;	
+}
+.titleEd
+{
+	background-color: Navy;
+	color: White;	
+}
+.boxIsland
+{
+	border-left: solid 1px #aaaaff;
+	border-right: solid 1px #aaaaff;
+	border-bottom: solid 1px #aaaaff;
+	width: 100%;
+}

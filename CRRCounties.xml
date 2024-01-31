@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StateList>
+  <State IdState="CA" StateName="California">
+		<County CountyName="Los Angeles" CRRCode="LA" FilePrefix="" ASSPARFormat="#####-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="Los Angeles County North" CRRCode="4" FilePrefix="LN" ASSPARFormat="#####-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="Los Angeles County South" CRRCode="5" FilePrefix="LS" ASSPARFormat="#####-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="Los Angeles County East" CRRCode="6" FilePrefix="LE" ASSPARFormat="#####-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="Los Angeles County West" CRRCode="7" FilePrefix="LW" ASSPARFormat="#####-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="Orange" CRRCode="1" FilePrefix="OR" ASSPARFormat="####-###-##" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="Riverside" CRRCode="2" FilePrefix="RI" ASSPARFormat="####-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="San Bernardino" CRRCode="3" FilePrefix="SB" ASSPARFormat="#####-###-##" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="San Diego" CRRCode="8" FilePrefix="SD" ASSPARFormat="####-###-##-00" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="true"></County>
+    <County CountyName="Santa Barbara" CRRCode="B" FilePrefix="SR" ASSPARFormat="####-###-##" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+    <County CountyName="Ventura" CRRCode="9" FilePrefix="VE" ASSPARFormat="####-#-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+  </State>
+  <State IdState="NV" StateName="Nevada">
+    <County CountyName="Clark" CRRCode="C" FilePrefix="CL" ASSPARFormat="####-##-###-###" TDIDDateFormat="yyyyMMdd" IncludeInErrors="false" FillAsspar="false"></County>
+  </State>
+	<State IdState="XX" StateName="NoState">
+		<County CountyName="No County" CRRCode="0" FilePrefix="XX" ASSPARFormat="####-##-###-###" TDIDDateFormat="yy" IncludeInErrors="true" FillAsspar="false"></County>
+	</State>
+</StateList>

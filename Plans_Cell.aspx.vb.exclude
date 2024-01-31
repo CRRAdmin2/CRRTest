@@ -1,0 +1,10 @@
+﻿Imports System.Data
+Imports System.Configuration.ConfigurationManager
+Imports DABILight
+Imports Infragistics.WebUI.UltraWebTab
+Imports System.Drawing
+
+Partial Class Plans_Cell
+  Inherits System.Web.UI.Page
+
+End Class

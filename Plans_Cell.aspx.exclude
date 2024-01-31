@@ -1,0 +1,132 @@
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Plans_Cell.aspx.vb" Inherits="Plans_Cell" %>
+<%@ Register TagPrefix="igmisc" Namespace="Infragistics.WebUI.Misc" Assembly="Infragistics2.WebUI.Misc.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" %>
+<%@ Register assembly="Infragistics2.WebUI.WebDateChooser.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.WebUI.WebSchedule" tagprefix="igsch" %>
+<%@ Register TagPrefix="igtxt" Namespace="Infragistics.WebUI.WebDataInput" Assembly="Infragistics2.WebUI.WebDataInput.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" %>
+<%@ Register assembly="Infragistics2.WebUI.UltraWebGrid.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.WebUI.UltraWebGrid" tagprefix="igtbl" %>
+<%@ Register assembly="Infragistics2.WebUI.UltraWebTab.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.WebUI.UltraWebTab" tagprefix="igtab" %>
+<%@ Register TagPrefix="ignav1" Namespace="Infragistics.WebUI.UltraWebNavigator" Assembly="Infragistics2.WebUI.UltraWebNavigator.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%=System.Configuration.ConfigurationManager.AppSettings("App_Title")%></title>
+		<meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=.3)" />
+    <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=.3)" />
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <LINK href="styles/mainWindow_styles.css" type="text/css" rel="stylesheet" />
+			<style type="text/css">#menu { Z-INDEX: 10; LEFT: 0px; POSITION: fixed; TOP: 0px }
+	</style>
+				<!--[if IE 6]>
+<style type="text/css">
+#menu { position:absolute; }
+</style>
+<script type="text/javascript">
+window.onscroll = function() {
+var root = (document.compatMode == "CSS1Compat"?
+document.documentElement: document.body);
+var elem = document.all["menu"];
+elem.style.left = root.scrollLeft + 0 + "px";
+elem.style.top = root.scrollTop + 0 + "px";
+};
+</script>
+<![endif]--><script language="javascript" src="scripts/general.js"></script>
+			<script language="javascript" src="scripts/pops.js"></script>
+			<script language="javascript" src="scripts/date.js"></script>
+			<script type="text/javascript" language="javascript" src="scripts/sc_CatGeneral_2_2.js"></script>
+			<script type="text/javascript" language="javascript" src="scripts/items/plans.js"></script>
+			<script>
+			</script>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <igsch:webdatechooser id="wds_grid" runat="server" Width="104px" Height="8px" StyleSetName="Visor" EnableAppStyling="True"
+															JavaScriptFileNameCommon="Infragistics/20072/scripts/ig_shared.js" JavaScriptFileName="Infragistics/20072/scripts/ig_webdropdown.js"
+															CalendarJavaScriptFileName="Infragistics/20072/scripts/ig_calendar.js" MinDate="1900-01-01" NullDateLabel=""
+															NullValueRepresentation="DateTime_MinValue"></igsch:webdatechooser>
+                        <igtbl:ultrawebgrid id="uwg" runat="server" Width="100%" StyleSetName="Visor" EnableAppStyling="True"
+												ImageDirectory="Infragistics/Images/" style="top: 0px; left: 0px" Height="100%" DataSourceID="LinqDataSource1">
+												<Bands>
+													<igtbl:UltraGridBand>
+														<Columns>
+    <igtbl:UltraGridColumn BaseColumnName="TRUSTOR" HeaderText="TRUSTOR" 
+      IsBound="True" Key="TRUSTOR">
+      <Header Caption="TRUSTOR">
+        <RowLayoutColumnInfo OriginX="7" />
+      </Header>
+      <Footer>
+        <RowLayoutColumnInfo OriginX="7" />
+      </Footer>
+    </igtbl:UltraGridColumn>
+    <igtbl:UltraGridColumn BaseColumnName="OWNER" HeaderText="OWNER" IsBound="True" 
+      Key="OWNER">
+      <Header Caption="OWNER">
+        <RowLayoutColumnInfo OriginX="8" />
+      </Header>
+      <Footer>
+        <RowLayoutColumnInfo OriginX="8" />
+      </Footer>
+    </igtbl:UltraGridColumn>
+															<igtbl:UltraGridColumn HeaderText="Comp Date" Key="Ant_Completion" EditorControlID="wds_grid" Case="Lower"
+																Width="182px" AllowUpdate="Yes" AllowGroupBy="No" Type="Custom" Format="MM/dd/yyyy hh:mm tt" DataType="System.DateTime" BaseColumnName="PRCHS_DATE">
+																<Footer Key="Ant_Completion">
+																	<RowLayoutColumnInfo OriginX="8"></RowLayoutColumnInfo>
+																</Footer>
+																<Header Key="Ant_Completion" Caption="Comp Date">
+																	<RowLayoutColumnInfo OriginX="8"></RowLayoutColumnInfo>
+																</Header>
+															</igtbl:UltraGridColumn>
+														</Columns>
+
+<AddNewRow Visible="NotSet" View="NotSet"></AddNewRow>
+													</igtbl:UltraGridBand>
+												</Bands>
+												<DisplayLayout AllowDeleteDefault="Yes" ColFootersVisibleDefault="Yes" JavaScriptFileName="Infragistics/20072/scripts/ig_WebGrid.js"
+													StationaryMargins="Header" StationaryMarginsOutlookGroupBy="True" AllowSortingDefault="OnClient"
+													RowHeightDefault="25px" Version="4.00" SelectTypeRowDefault="Extended" JavaScriptFileNameCommon="Infragistics/20072/Scripts/ig_shared.js"
+													HeaderClickActionDefault="SortMulti" BorderCollapseDefault="Separate" AllowColSizingDefault="Free"
+													EnableInternalRowsManagement="True" Name="uwg" TableLayout="Fixed" CellClickActionDefault="Edit"
+													AllowUpdateDefault="Yes">
+													<AddNewBox Hidden="False">
+														<Style BorderWidth="1px" BorderColor="InactiveCaption" BorderStyle="Solid" BackColor="Window">
+
+<BorderDetails ColorTop="White" WidthLeft="1px" WidthTop="1px" ColorLeft="White">
+</BorderDetails>
+
+</Style>
+													</AddNewBox>
+													<Pager MinimumPagesForDisplay="2">
+														<Style BorderWidth="1px" BorderStyle="Solid" BackColor="LightGray">
+
+<BorderDetails ColorTop="White" WidthLeft="1px" WidthTop="1px" ColorLeft="White">
+</BorderDetails>
+
+</Style>
+													</Pager>
+													<FrameStyle Width="100%" Font-Bold="True" ForeColor="#444444" Height="100%"></FrameStyle>
+													<FilterOptionsDefault>
+														<FilterDropDownStyle Width="200px" BorderWidth="1px" Font-Size="11px" Font-Names="Verdana,Arial,Helvetica,sans-serif"
+															BorderColor="Silver" BorderStyle="Solid" BackColor="White" Height="300px" CustomRules="overflow:auto;">
+															<Padding Left="2px"></Padding>
+														</FilterDropDownStyle>
+														<FilterHighlightRowStyle ForeColor="White" BackColor="#151C55"></FilterHighlightRowStyle>
+														<FilterOperandDropDownStyle BorderWidth="1px" Font-Size="11px" Font-Names="Verdana,Arial,Helvetica,sans-serif"
+															BorderColor="Silver" BorderStyle="Solid" BackColor="White" CustomRules="overflow:auto;">
+															<Padding Left="2px"></Padding>
+														</FilterOperandDropDownStyle>
+													</FilterOptionsDefault>
+													<ClientSideEvents AfterCellUpdateHandler="uwg_AfterCellUpdateHandler" DblClickHandler="Hide_Grid"></ClientSideEvents>
+													<ActivationObject BorderWidth="" BorderColor=""></ActivationObject>
+													<GroupByBox>
+														<Style BorderColor="Window" BackColor="ActiveBorder"></Style>
+													</GroupByBox>
+													<Images ImageDirectory="Infragistics/Images/"></Images>
+												</DisplayLayout>
+											</igtbl:ultrawebgrid>
+			 <asp:LinqDataSource ID="LinqDataSource1" runat="server" 
+ContextTypeName="DataClassesDataContext" TableName="NODs">
+</asp:LinqDataSource>
+    </form>
+</body>
+</html>

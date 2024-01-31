@@ -1,0 +1,120 @@
+<%@ Master Language="VB" CodeFile="Principal.master.vb" Inherits="Principal" %>
+
+<%@ Register Assembly="Infragistics2.WebUI.Misc.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+  Namespace="Infragistics.WebUI.Misc" TagPrefix="igmisc" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+		<meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=.3)" />
+    <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=.3)" />
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <!--meta http-equiv="Cache-Control" content="No-Cache" /-->
+    <link href="Estilo.css" rel="stylesheet" type="text/css" />
+    <style>
+      .modalBackground 
+      {
+          background-color:White;
+          filter:alpha(opacity=70);
+          opacity:0.7;
+      }
+      .arrastre
+      {
+	      cursor: move;	
+      }
+			#progressBackgroundFilter { 
+				position:fixed; 
+				top:0px; 
+				bottom:0px; 
+				left:0px; 
+				right:0px; 
+				overflow:hidden; 
+				padding:0; 
+				margin:0; 
+				background-color:#ffffff;  
+				filter:alpha(opacity=50); 
+				opacity:0.5; 
+				z-index:1000; 
+			} 
+
+			#processMessage {  
+				position:fixed;  
+				top:80px;  
+				left:40%; 
+				padding:10px; 
+				width:240px; 
+				z-index:1001; 
+				background-color:#ffffff; 
+				border: outset  1px #c58e44; 
+				color: #332800;
+			} 
+			.ButtonNew
+			{
+				background-color: Navy;
+				color: White;
+				font-weight: bold;
+				}
+				#divStatus
+				{        
+					position: fixed;        
+					text-align: right;        
+					right: 0px;        
+					bottom: 10px;        
+					z-index: 999999;      
+				}
+
+    </style>
+    <script>
+      function Status(msg) 
+      {       
+        var divStatus = document.getElementById('divStatus');       
+        divStatus.innerHTML += '<table width="100%"><tr><td style="text-align: right;">' + msg + '</td></tr></table>';
+        setTimeout("divStatus.removeChild(divStatus.firstChild);", 4000);     
+      }
+    </script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="DivSize();" onResize="DivSize();">
+    <form id="form1" runat="server">
+      <asp:ScriptManager ID="ScriptManager1" runat="server" EnableHistory="True"></asp:ScriptManager>
+      <input id="flag" name="flag" type="hidden" />
+        <div style="width: 100%;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td width="100px"></td>
+              <td width="103px" class="menu"><a href="NodP.aspx" style="color: white;">NOD</a></td>
+              <td width="103px" class="menu"><a href="NtsP.aspx" style="color: white;">NTS</a></td>
+              <td width="103px" class="menu"><a href="FtpUpload.aspx" style="color: white;">FTP</a></td>
+              <td width="103px" class="menu"><a href="Users.aspx" style="color: white;">USR</a></td>
+              <td width="103px" class="menu"><asp:LinkButton ID="lnkExit" runat="server" CausesValidation="false"  style="color: white;">EXIT</asp:LinkButton></td>
+              <td>&nbsp;&nbsp;<b>Welcome:</b> <%= Request.Cookies("Usuario_Nombre").Value %></td>
+            </tr>
+          </table>
+          <div id="divStatus"></div>
+          <table cellpadding="0" cellspacing="0" border="0" class="relieve" style="width: 100%">
+            <tr>
+              <td><br />
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                  <ContentTemplate>
+                 </ContentTemplate>
+                </asp:UpdatePanel>
+                  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+                  </asp:ContentPlaceHolder>
+                <asp:updateprogress associatedupdatepanelid="UpdatePanel1" id="updateProgress" runat="server" DynamicLayout="true" DisplayAfter="1">
+                    <progresstemplate>
+                        <div id="progressBackgroundFilter">
+                        </div>
+                        <div id="processMessage"> Processing...<br /><br /><asp:Image ID="imgProcesando" runat="server" ImageUrl="~/Images/wait-bar.gif" /></div>
+                    </progresstemplate>
+                </asp:updateprogress>  
+              </td>
+            </tr>
+          </table>
+        </div>
+    </form>
+</body>
+</html>

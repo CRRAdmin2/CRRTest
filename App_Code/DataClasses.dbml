@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NoNtsTest" Class="DataClassesDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=NEARSOFT-W81\SQLEXPRESS;Initial Catalog=NoNtsTest;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="NoNtsTestConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Status" Member="Status">
+    <Type Name="Status">
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Status_NT" Member="NTs" ThisKey="IdStatus" OtherKey="IdStatus" Type="NT" />
+      <Association Name="Status_NOD" Member="NODs" ThisKey="IdStatus" OtherKey="IdStatus" Type="NOD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MASK" Member="MASKs">
+    <Type Name="MASK">
+      <Column Name="COUNTY" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ASSPAR" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StatusDBF" Member="StatusDBFs">
+    <Type Name="StatusDBF">
+      <Column Name="IdStatusDBF" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="StatusDBF_NT" Member="NTs" ThisKey="IdStatusDBF" OtherKey="IdStatusDBF" Type="NT" />
+      <Association Name="StatusDBF_NOD" Member="NODs" ThisKey="IdStatusDBF" OtherKey="IdStatusDBF" Type="NOD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.State" Member="States">
+    <Type Name="State">
+      <Column Name="IdState" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StateName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="State_County" Member="Counties" ThisKey="IdState" OtherKey="IdState" Type="County" />
+    </Type>
+  </Table>
+  <Table Name="dbo.County" Member="Counties">
+    <Type Name="County">
+      <Column Name="IdCounty" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdState" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CountyName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CRRCode" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="FilePrefix" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="ASSPARFormat" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="TDIDDateFormat" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeInErrors" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FillAsspar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="State_County" Member="State" ThisKey="IdState" OtherKey="IdState" Type="State" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESTIMATED_VALUE" Member="ESTIMATED_VALUEs">
+    <Type Name="ESTIMATED_VALUE">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SA_PROPERTY_ID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="ESTIMATED_PROP_VALUE" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NTS" Member="NTs">
+    <Type Name="NT">
+      <Column Name="IdNts" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="T_S_NO" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="LST" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VarChar(39)" CanBeNull="true" />
+      <Column Name="CITY" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="ZIP" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="TG" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="HOEX" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TRUSTOR" Type="System.String" DbType="VarChar(51)" CanBeNull="true" />
+      <Column Name="OWNER" Type="System.String" DbType="VarChar(51)" CanBeNull="true" />
+      <Column Name="TRUSTEE" Type="System.String" DbType="VarChar(38)" CanBeNull="true" />
+      <Column Name="T_PHONE" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="BENEFRY" Type="System.String" DbType="VarChar(38)" CanBeNull="true" />
+      <Column Name="B_PHONE" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SALE_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SALE_TIME" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="SITE" Type="System.String" DbType="VarChar(48)" CanBeNull="true" />
+      <Column Name="TAX_VALUE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TX_YR" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="PRCHS_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AMOUNT" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TD1_A" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TD1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD1_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD2_A" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TD2" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD2_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD3_A" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TD3" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD3_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD4_A" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TD4" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD4_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD5_A" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TD5" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD5_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD6_A" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TD6" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD6_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[USE]" Member="USE" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="YRBLT" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="SQFT" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="STORY" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ROOMS" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="LOT" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="LEGAL" Type="System.String" DbType="VarChar(51)" CanBeNull="true" />
+      <Column Name="ASSPAR" Type="System.String" DbType="VarChar(23)" CanBeNull="true" />
+      <Column Name="NOD" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LOAN" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NTS" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="TDID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="REMARKS" Type="System.String" DbType="VarChar(124)" CanBeNull="true" />
+      <Column Name="COUNTY" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="L_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Modified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatusDBF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateDBF" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Locked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SA_PROPERTY_ID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SR_UNIQUE_ID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="OWNER1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OWNER2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRUSTOR_FIRST_NAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRUSTOR_LAST_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="BATHROOMS" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="BEDROOMS" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="ADDRESS_ID_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TR_PHONE" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TRUSTEE_ADDRESS" Type="System.String" DbType="VarChar(78)" CanBeNull="true" />
+      <Column Name="TRUSTEE_CITY" Type="System.String" DbType="VarChar(44)" CanBeNull="true" />
+      <Column Name="TRUSTEE_ZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TRUSTEE_ADDRESS_ID_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="BENE_ADDRESS" Type="System.String" DbType="VarChar(78)" CanBeNull="true" />
+      <Column Name="BENE_CITY" Type="System.String" DbType="VarChar(44)" CanBeNull="true" />
+      <Column Name="BENE_ZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BENE_ADDRESS_ID_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="UNITS" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="ESTIMATED_PROP_VALUE" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="PROP_TAX_STATUS_1" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="PROP_TAX_STATUS_2" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="PROP_TAX_STATUS_3" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="NBRROOMS" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="ST_HS_NBR" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ST_FRACT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ST_DIR" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ST_STRT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ST_SUF" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ST_POSTD" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ST_UNTPR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ST_UNTVL" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ST_CITYSTATE" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
+      <Column Name="ML_HS_NBR" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ML_FRACT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ML_DIR" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ML_STRT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ML_SUF" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ML_POSTD" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ML_UNTPR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ML_UNTVL" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ML_CITY" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
+      <Column Name="ML_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ML_ZIP" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ML_ZIPPLUS4" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="TRUSTEE_HOUSE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TRUSTEE_STNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRUSTEE_UNITNBR" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="BENE_HOUSE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BENE_STNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BENE_UNITNBR" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="SA_OWNR_SC" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="SA_POL_COD" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="SA_POL_SQF" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SA_VW_CODE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="NOD_REC_DT" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NTS_REC_DT" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ST_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="IdCounty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SA_ZONING" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="SA_VAL_TRANSFER" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Association Name="Status_NT" Member="Status" ThisKey="IdStatus" OtherKey="IdStatus" Type="Status" IsForeignKey="true" />
+      <Association Name="StatusDBF_NT" Member="StatusDBF" ThisKey="IdStatusDBF" OtherKey="IdStatusDBF" Type="StatusDBF" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NOD" Member="NODs">
+    <Type Name="NOD">
+      <Column Name="IdNod" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LST" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VarChar(78)" CanBeNull="true" />
+      <Column Name="CITY" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="ZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TG" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="HOEX" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TRUSTOR" Type="System.String" DbType="VarChar(51)" CanBeNull="true" />
+      <Column Name="OWNER" Type="System.String" DbType="VarChar(51)" CanBeNull="true" />
+      <Column Name="BENEFRY" Type="System.String" DbType="VarChar(38)" CanBeNull="true" />
+      <Column Name="B_PHONE" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TAX_VALUE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TX_YR" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="PRCHS_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AMOUNT" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TD1_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD1_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD2_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD2" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD2_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD3_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD3" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD3_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD4_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD4" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD4_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD5_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD5" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD5_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD6_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD6" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD6_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[USE]" Member="USE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="YRBLT" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="SQFT" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="STORY" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ROOMS" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="LOT" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="LEGAL" Type="System.String" DbType="VarChar(51)" CanBeNull="true" />
+      <Column Name="ASSPAR" Type="System.String" DbType="VarChar(23)" CanBeNull="true" />
+      <Column Name="NOD" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LOAN" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TDID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="REMARKS" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="COUNTY" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="L_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ASOF" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DELNIQ" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TRUSTEE" Type="System.String" DbType="VarChar(38)" CanBeNull="true" />
+      <Column Name="SALE_TIME" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="NTS" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="T_PHONE" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SALE_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SITE" Type="System.String" DbType="VarChar(48)" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Modified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatusDBF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateDBF" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Locked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SA_PROPERTY_ID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SR_UNIQUE_ID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="OWNER1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OWNER2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRUSTOR_FIRST_NAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRUSTOR_LAST_NAME" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="BATHROOMS" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="BEDROOMS" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="ADDRESS_ID_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TR_PHONE" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TRUSTEE_ADDRESS" Type="System.String" DbType="VarChar(78)" CanBeNull="true" />
+      <Column Name="TRUSTEE_CITY" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="TRUSTEE_ZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TRUSTEE_ADDRESS_ID_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="BENE_ADDRESS" Type="System.String" DbType="VarChar(78)" CanBeNull="true" />
+      <Column Name="BENE_CITY" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="BENE_ZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BENE_ADDRESS_ID_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="UNITS" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="ESTIMATED_PROP_VALUE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PROP_TAX_STATUS_1" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="PROP_TAX_STATUS_2" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="PROP_TAX_STATUS_3" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="NBRROOMS" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="ST_HS_NBR" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ST_FRACT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ST_DIR" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ST_STRT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ST_SUF" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ST_POSTD" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ST_UNTPR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ST_UNTVL" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ST_CITYSTATE" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
+      <Column Name="ML_HS_NBR" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ML_FRACT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ML_DIR" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ML_STRT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ML_SUF" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ML_POSTD" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ML_UNTPR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ML_UNTVL" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ML_CITY" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
+      <Column Name="ML_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ML_ZIP" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ML_ZIPPLUS4" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="TRUSTEE_HOUSE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TRUSTEE_STNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRUSTEE_UNITNBR" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="BENE_HOUSE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BENE_STNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BENE_UNITNBR" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="SA_OWNR_SC" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="SA_POL_COD" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="SA_POL_SQF" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SA_VW_CODE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="NOD_REC_DT" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NTS_REC_DT" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ST_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="IdCounty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FD_TRUSTEE_SALE_NBR" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="SA_ZONING" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="SA_VAL_TRANSFER" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Association Name="Status_NOD" Member="Status" ThisKey="IdStatus" OtherKey="IdStatus" Type="Status" IsForeignKey="true" />
+      <Association Name="StatusDBF_NOD" Member="StatusDBF" ThisKey="IdStatusDBF" OtherKey="IdStatusDBF" Type="StatusDBF" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cities_in_Counties" Member="Cities_in_Counties">
+    <Type Name="Cities_in_County">
+      <Column Name="County" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NTSMatching" Member="NTSMatchings">
+    <Type Name="NTSMatching">
+      <Column Name="tsno" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="NTS" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="ASSPAR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SA_PROPERTY_ID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IdCounty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ADDRESS_ID_STATE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Locked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdNts" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="T_S_NO" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="TDID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SR_UNIQUE_ID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="IdState" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CountyName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SearchNOD" Method="SearchNOD">
+    <Parameter Name="TDID" Parameter="tDID" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ASSPAR" Parameter="aSSPAR" Type="System.String" DbType="VarChar(46)" />
+    <ElementType Name="SearchNODResult">
+      <Column Name="Found" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ASSPAR" Type="System.String" DbType="VarChar(46)" CanBeNull="true" />
+      <Column Name="FoundASPAR" Type="System.String" DbType="VarChar(46)" CanBeNull="true" />
+      <Column Name="TDID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="FoundTDID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SearchNTS" Method="SearchNTS">
+    <Parameter Name="TDID" Parameter="tDID" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="NTS" Parameter="nTS" Type="System.String" DbType="VarChar(14)" />
+    <ElementType Name="SearchNTSResult">
+      <Column Name="Found" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NTS" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="FoundNTS" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="TDID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="FoundTDID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.NTStoNOD" Method="NTStoNOD">
+    <Parameter Name="IdNTS" Parameter="idNTS" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetMissingLoanFromNOD" Method="GetMissingLoanFromNOD">
+    <Parameter Name="SA_PROPERTY_ID" Parameter="sA_PROPERTY_ID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="LOAN_DATE" Parameter="lOAN_DATE" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="LOAN_AMOUNT" Parameter="lOAN_AMOUNT" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetMissingLoanFromNODResult">
+      <Column Name="TD1_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD1_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD2_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD2" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD2_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TD3_A" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TD3" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD3_D" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LoanPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetOriginalLoanAmountFromNOD" Method="GetOriginalLoanAmountFromNOD">
+    <Parameter Name="SA_PROPERTY_ID" Parameter="sA_PROPERTY_ID" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetOriginalLoanAmountFromNODResult">
+      <Column Name="TD1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD2" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TD3" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetEstimatedValue" Method="GetEstimatedValue" IsComposable="true">
+    <Parameter Name="SA_PROPERTY_ID" Parameter="sA_PROPERTY_ID" Type="System.String" DbType="VarChar(12)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.RemoveMidZeroesFromDocumentNumber" Method="RemoveMidZeroesFromDocumentNumber" IsComposable="true">
+    <Parameter Name="DocumentNumber" Parameter="documentNumber" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.RemoveNonAlphaCharacters" Method="RemoveNonAlphaCharacters" IsComposable="true">
+    <Parameter Name="Temp" Parameter="temp" Type="System.String" DbType="VarChar(1000)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.splitstring" Method="splitstring" IsComposable="true">
+    <Parameter Name="stringToSplit" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="separator" Type="System.Char" DbType="Char(1)" />
+    <ElementType Name="splitstringResult">
+      <Column Name="value" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
